@@ -1,0 +1,13 @@
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\bin\Debug\ChipRapidTest.exe.config
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\bin\Debug\ChipRapidTest.exe
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\bin\Debug\ChipRapidTest.pdb
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.csprojAssemblyReference.cache
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.Form1.resources
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.Properties.Resources.resources
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.csproj.GenerateResource.cache
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.exe
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.pdb
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\bin\Debug\MWArray.dll
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\bin\Debug\PolyFit_NPlot.dll
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\bin\Debug\MWArray.xml
+C:\Users\yuchi\source\repos\ChipRapidTest\ChipRapidTest\obj\Debug\ChipRapidTest.csproj.CopyComplete
