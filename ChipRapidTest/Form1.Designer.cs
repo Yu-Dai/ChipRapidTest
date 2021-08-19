@@ -34,20 +34,44 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ProcessLog_txb = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label17 = new System.Windows.Forms.Label();
-            this.Result_Label = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.PassNgTest = new System.Windows.Forms.TabPage();
             this.label20 = new System.Windows.Forms.Label();
-            this.Result = new System.Windows.Forms.Label();
-            this.BaseLineRMSE_threshold = new System.Windows.Forms.TextBox();
             this.Gamma_Level = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
-            this.FWHM_RMSE_threshold = new System.Windows.Forms.TextBox();
             this.EXP_Level = new System.Windows.Forms.TextBox();
+            this.Result = new System.Windows.Forms.Label();
+            this.Result_Label = new System.Windows.Forms.Label();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.label62 = new System.Windows.Forms.Label();
+            this.label64 = new System.Windows.Forms.Label();
+            this.P3_Scale_txb = new System.Windows.Forms.TextBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label56 = new System.Windows.Forms.Label();
+            this.P2_Scale_txb = new System.Windows.Forms.TextBox();
+            this.label61 = new System.Windows.Forms.Label();
+            this.label60 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.P1_Scale_txb = new System.Windows.Forms.TextBox();
+            this.label17 = new System.Windows.Forms.Label();
+            this.BaseLineRMSE_threshold = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.FWHM_RMSE_threshold = new System.Windows.Forms.TextBox();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.label_LED_blue = new System.Windows.Forms.Label();
+            this.label_led_yellow = new System.Windows.Forms.Label();
+            this.LedYellowFWHM_threshold = new System.Windows.Forms.TextBox();
+            this.LedBlueFWHM_threshold = new System.Windows.Forms.TextBox();
+            this.label59 = new System.Windows.Forms.Label();
+            this.label63 = new System.Windows.Forms.Label();
+            this.label58 = new System.Windows.Forms.Label();
+            this.Blue_Scale_txb = new System.Windows.Forms.TextBox();
+            this.HgAr_Mode_btn = new System.Windows.Forms.RadioButton();
+            this.Nomal_mode_btn = new System.Windows.Forms.RadioButton();
+            this.label22 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.ProcessLog_txb = new System.Windows.Forms.TextBox();
+            this.label21 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.AutoScale_txb = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
@@ -86,13 +110,18 @@
             this.ROIImage = new System.Windows.Forms.PictureBox();
             this.chart_original = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.label22 = new System.Windows.Forms.Label();
-            this.Nomal_mode_btn = new System.Windows.Forms.RadioButton();
-            this.HgAr_Mode_btn = new System.Windows.Forms.RadioButton();
+            this.White_Mode_btn = new System.Windows.Forms.RadioButton();
+            this.hg_scale_passng_CKB = new System.Windows.Forms.CheckBox();
+            this.White_scale_passng_CKB = new System.Windows.Forms.CheckBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.Scale_Result_Label = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.PassNgTest.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -142,13 +171,14 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.White_Mode_btn);
+            this.panel1.Controls.Add(this.tabControl1);
             this.panel1.Controls.Add(this.HgAr_Mode_btn);
             this.panel1.Controls.Add(this.Nomal_mode_btn);
             this.panel1.Controls.Add(this.label22);
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.ProcessLog_txb);
             this.panel1.Controls.Add(this.label21);
-            this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.AutoScale_txb);
             this.panel1.Controls.Add(this.button1);
@@ -163,6 +193,396 @@
             this.panel1.Size = new System.Drawing.Size(568, 374);
             this.panel1.TabIndex = 1;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.PassNgTest);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Location = new System.Drawing.Point(8, 175);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(441, 144);
+            this.tabControl1.TabIndex = 41;
+            // 
+            // PassNgTest
+            // 
+            this.PassNgTest.Controls.Add(this.label23);
+            this.PassNgTest.Controls.Add(this.Scale_Result_Label);
+            this.PassNgTest.Controls.Add(this.label20);
+            this.PassNgTest.Controls.Add(this.Gamma_Level);
+            this.PassNgTest.Controls.Add(this.label19);
+            this.PassNgTest.Controls.Add(this.EXP_Level);
+            this.PassNgTest.Controls.Add(this.Result);
+            this.PassNgTest.Controls.Add(this.Result_Label);
+            this.PassNgTest.Location = new System.Drawing.Point(4, 22);
+            this.PassNgTest.Name = "PassNgTest";
+            this.PassNgTest.Padding = new System.Windows.Forms.Padding(3);
+            this.PassNgTest.Size = new System.Drawing.Size(433, 118);
+            this.PassNgTest.TabIndex = 0;
+            this.PassNgTest.Text = "PassNgTest";
+            this.PassNgTest.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label20.Location = new System.Drawing.Point(220, 21);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(101, 13);
+            this.label20.TabIndex = 50;
+            this.label20.Text = "Gamma_Level<:";
+            // 
+            // Gamma_Level
+            // 
+            this.Gamma_Level.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Gamma_Level.Location = new System.Drawing.Point(326, 18);
+            this.Gamma_Level.Name = "Gamma_Level";
+            this.Gamma_Level.Size = new System.Drawing.Size(47, 23);
+            this.Gamma_Level.TabIndex = 49;
+            this.Gamma_Level.Text = "350";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label19.Location = new System.Drawing.Point(203, 55);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(122, 13);
+            this.label19.TabIndex = 48;
+            this.label19.Text = "Back_Light_Level<:";
+            // 
+            // EXP_Level
+            // 
+            this.EXP_Level.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.EXP_Level.Location = new System.Drawing.Point(327, 52);
+            this.EXP_Level.Name = "EXP_Level";
+            this.EXP_Level.Size = new System.Drawing.Size(50, 23);
+            this.EXP_Level.TabIndex = 47;
+            this.EXP_Level.Text = "4";
+            // 
+            // Result
+            // 
+            this.Result.AutoSize = true;
+            this.Result.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Result.Location = new System.Drawing.Point(19, 16);
+            this.Result.Name = "Result";
+            this.Result.Size = new System.Drawing.Size(67, 19);
+            this.Result.TabIndex = 31;
+            this.Result.Text = "Result:";
+            // 
+            // Result_Label
+            // 
+            this.Result_Label.AutoSize = true;
+            this.Result_Label.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Result_Label.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Result_Label.Location = new System.Drawing.Point(92, 17);
+            this.Result_Label.Name = "Result_Label";
+            this.Result_Label.Size = new System.Drawing.Size(37, 19);
+            this.Result_Label.TabIndex = 32;
+            this.Result_Label.Text = "----";
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.hg_scale_passng_CKB);
+            this.tabPage2.Controls.Add(this.label62);
+            this.tabPage2.Controls.Add(this.label64);
+            this.tabPage2.Controls.Add(this.P3_Scale_txb);
+            this.tabPage2.Controls.Add(this.label54);
+            this.tabPage2.Controls.Add(this.label56);
+            this.tabPage2.Controls.Add(this.P2_Scale_txb);
+            this.tabPage2.Controls.Add(this.label61);
+            this.tabPage2.Controls.Add(this.label60);
+            this.tabPage2.Controls.Add(this.label53);
+            this.tabPage2.Controls.Add(this.P1_Scale_txb);
+            this.tabPage2.Controls.Add(this.label17);
+            this.tabPage2.Controls.Add(this.BaseLineRMSE_threshold);
+            this.tabPage2.Controls.Add(this.label18);
+            this.tabPage2.Controls.Add(this.FWHM_RMSE_threshold);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(433, 118);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "汞氬燈參數設定";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // label62
+            // 
+            this.label62.AutoSize = true;
+            this.label62.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label62.Location = new System.Drawing.Point(406, 98);
+            this.label62.Name = "label62";
+            this.label62.Size = new System.Drawing.Size(22, 13);
+            this.label62.TabIndex = 196;
+            this.label62.Text = "倍";
+            // 
+            // label64
+            // 
+            this.label64.AutoSize = true;
+            this.label64.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label64.Location = new System.Drawing.Point(188, 98);
+            this.label64.Name = "label64";
+            this.label64.Size = new System.Drawing.Size(158, 13);
+            this.label64.TabIndex = 195;
+            this.label64.Text = "Hg-peak4需>Hg-peak3";
+            // 
+            // P3_Scale_txb
+            // 
+            this.P3_Scale_txb.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.P3_Scale_txb.Location = new System.Drawing.Point(368, 92);
+            this.P3_Scale_txb.Name = "P3_Scale_txb";
+            this.P3_Scale_txb.Size = new System.Drawing.Size(35, 23);
+            this.P3_Scale_txb.TabIndex = 194;
+            this.P3_Scale_txb.Text = "0.8";
+            // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label54.Location = new System.Drawing.Point(406, 74);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(22, 13);
+            this.label54.TabIndex = 193;
+            this.label54.Text = "倍";
+            // 
+            // label56
+            // 
+            this.label56.AutoSize = true;
+            this.label56.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label56.Location = new System.Drawing.Point(188, 73);
+            this.label56.Name = "label56";
+            this.label56.Size = new System.Drawing.Size(158, 13);
+            this.label56.TabIndex = 192;
+            this.label56.Text = "Hg-peak2需>Hg-peak3";
+            // 
+            // P2_Scale_txb
+            // 
+            this.P2_Scale_txb.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.P2_Scale_txb.Location = new System.Drawing.Point(368, 68);
+            this.P2_Scale_txb.Name = "P2_Scale_txb";
+            this.P2_Scale_txb.Size = new System.Drawing.Size(35, 23);
+            this.P2_Scale_txb.TabIndex = 191;
+            this.P2_Scale_txb.Text = "0.8";
+            // 
+            // label61
+            // 
+            this.label61.AutoSize = true;
+            this.label61.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label61.Location = new System.Drawing.Point(407, 51);
+            this.label61.Name = "label61";
+            this.label61.Size = new System.Drawing.Size(22, 13);
+            this.label61.TabIndex = 190;
+            this.label61.Text = "倍";
+            // 
+            // label60
+            // 
+            this.label60.AutoSize = true;
+            this.label60.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label60.Location = new System.Drawing.Point(186, 36);
+            this.label60.Name = "label60";
+            this.label60.Size = new System.Drawing.Size(155, 13);
+            this.label60.TabIndex = 189;
+            this.label60.Text = "參考標準 : Hg-peak3";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label53.Location = new System.Drawing.Point(189, 52);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(158, 13);
+            this.label53.TabIndex = 188;
+            this.label53.Text = "Hg-peak1需>Hg-peak3";
+            // 
+            // P1_Scale_txb
+            // 
+            this.P1_Scale_txb.Font = new System.Drawing.Font("標楷體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.P1_Scale_txb.Location = new System.Drawing.Point(368, 44);
+            this.P1_Scale_txb.Name = "P1_Scale_txb";
+            this.P1_Scale_txb.Size = new System.Drawing.Size(35, 23);
+            this.P1_Scale_txb.TabIndex = 187;
+            this.P1_Scale_txb.Text = "0.8";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label17.Location = new System.Drawing.Point(6, 48);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(91, 13);
+            this.label17.TabIndex = 40;
+            this.label17.Text = "BaseRMSE < :";
+            // 
+            // BaseLineRMSE_threshold
+            // 
+            this.BaseLineRMSE_threshold.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.BaseLineRMSE_threshold.Location = new System.Drawing.Point(103, 45);
+            this.BaseLineRMSE_threshold.Name = "BaseLineRMSE_threshold";
+            this.BaseLineRMSE_threshold.Size = new System.Drawing.Size(54, 23);
+            this.BaseLineRMSE_threshold.TabIndex = 39;
+            this.BaseLineRMSE_threshold.Text = "5";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label18.Location = new System.Drawing.Point(6, 79);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(106, 13);
+            this.label18.TabIndex = 42;
+            this.label18.Text = "FWHM_RMSE<:";
+            // 
+            // FWHM_RMSE_threshold
+            // 
+            this.FWHM_RMSE_threshold.Font = new System.Drawing.Font("新細明體", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.FWHM_RMSE_threshold.Location = new System.Drawing.Point(117, 74);
+            this.FWHM_RMSE_threshold.Name = "FWHM_RMSE_threshold";
+            this.FWHM_RMSE_threshold.Size = new System.Drawing.Size(51, 23);
+            this.FWHM_RMSE_threshold.TabIndex = 41;
+            this.FWHM_RMSE_threshold.Text = "8";
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.White_scale_passng_CKB);
+            this.tabPage1.Controls.Add(this.label_LED_blue);
+            this.tabPage1.Controls.Add(this.label_led_yellow);
+            this.tabPage1.Controls.Add(this.LedYellowFWHM_threshold);
+            this.tabPage1.Controls.Add(this.LedBlueFWHM_threshold);
+            this.tabPage1.Controls.Add(this.label59);
+            this.tabPage1.Controls.Add(this.label63);
+            this.tabPage1.Controls.Add(this.label58);
+            this.tabPage1.Controls.Add(this.Blue_Scale_txb);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Size = new System.Drawing.Size(433, 118);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "白光參數設定";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // label_LED_blue
+            // 
+            this.label_LED_blue.AutoSize = true;
+            this.label_LED_blue.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label_LED_blue.Location = new System.Drawing.Point(19, 36);
+            this.label_LED_blue.Name = "label_LED_blue";
+            this.label_LED_blue.Size = new System.Drawing.Size(114, 16);
+            this.label_LED_blue.TabIndex = 185;
+            this.label_LED_blue.Text = "藍光 FWHM < ";
+            // 
+            // label_led_yellow
+            // 
+            this.label_led_yellow.AutoSize = true;
+            this.label_led_yellow.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label_led_yellow.Location = new System.Drawing.Point(19, 69);
+            this.label_led_yellow.Name = "label_led_yellow";
+            this.label_led_yellow.Size = new System.Drawing.Size(114, 16);
+            this.label_led_yellow.TabIndex = 188;
+            this.label_led_yellow.Text = "螢光 FWHM < ";
+            // 
+            // LedYellowFWHM_threshold
+            // 
+            this.LedYellowFWHM_threshold.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.LedYellowFWHM_threshold.Location = new System.Drawing.Point(152, 66);
+            this.LedYellowFWHM_threshold.Name = "LedYellowFWHM_threshold";
+            this.LedYellowFWHM_threshold.Size = new System.Drawing.Size(55, 27);
+            this.LedYellowFWHM_threshold.TabIndex = 187;
+            this.LedYellowFWHM_threshold.Text = "140";
+            // 
+            // LedBlueFWHM_threshold
+            // 
+            this.LedBlueFWHM_threshold.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.LedBlueFWHM_threshold.Location = new System.Drawing.Point(152, 33);
+            this.LedBlueFWHM_threshold.Name = "LedBlueFWHM_threshold";
+            this.LedBlueFWHM_threshold.Size = new System.Drawing.Size(55, 27);
+            this.LedBlueFWHM_threshold.TabIndex = 183;
+            this.LedBlueFWHM_threshold.Text = "40";
+            // 
+            // label59
+            // 
+            this.label59.AutoSize = true;
+            this.label59.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label59.Location = new System.Drawing.Point(237, 54);
+            this.label59.Name = "label59";
+            this.label59.Size = new System.Drawing.Size(171, 16);
+            this.label59.TabIndex = 190;
+            this.label59.Text = "參考標準 : 黃光波峰";
+            // 
+            // label63
+            // 
+            this.label63.AutoSize = true;
+            this.label63.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label63.Location = new System.Drawing.Point(386, 84);
+            this.label63.Name = "label63";
+            this.label63.Size = new System.Drawing.Size(25, 16);
+            this.label63.TabIndex = 189;
+            this.label63.Text = "倍";
+            // 
+            // label58
+            // 
+            this.label58.AutoSize = true;
+            this.label58.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label58.Location = new System.Drawing.Point(237, 83);
+            this.label58.Name = "label58";
+            this.label58.Size = new System.Drawing.Size(102, 16);
+            this.label58.TabIndex = 186;
+            this.label58.Text = "藍光需>黃光";
+            // 
+            // Blue_Scale_txb
+            // 
+            this.Blue_Scale_txb.Font = new System.Drawing.Font("標楷體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Blue_Scale_txb.Location = new System.Drawing.Point(346, 80);
+            this.Blue_Scale_txb.Name = "Blue_Scale_txb";
+            this.Blue_Scale_txb.Size = new System.Drawing.Size(35, 27);
+            this.Blue_Scale_txb.TabIndex = 184;
+            this.Blue_Scale_txb.Text = "1.5";
+            // 
+            // HgAr_Mode_btn
+            // 
+            this.HgAr_Mode_btn.AutoSize = true;
+            this.HgAr_Mode_btn.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HgAr_Mode_btn.Location = new System.Drawing.Point(416, 147);
+            this.HgAr_Mode_btn.Name = "HgAr_Mode_btn";
+            this.HgAr_Mode_btn.Size = new System.Drawing.Size(145, 20);
+            this.HgAr_Mode_btn.TabIndex = 40;
+            this.HgAr_Mode_btn.TabStop = true;
+            this.HgAr_Mode_btn.Text = "汞氬燈測試模式";
+            this.HgAr_Mode_btn.UseVisualStyleBackColor = true;
+            // 
+            // Nomal_mode_btn
+            // 
+            this.Nomal_mode_btn.AutoSize = true;
+            this.Nomal_mode_btn.BackColor = System.Drawing.Color.Transparent;
+            this.Nomal_mode_btn.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Nomal_mode_btn.Location = new System.Drawing.Point(416, 123);
+            this.Nomal_mode_btn.Name = "Nomal_mode_btn";
+            this.Nomal_mode_btn.Size = new System.Drawing.Size(111, 20);
+            this.Nomal_mode_btn.TabIndex = 39;
+            this.Nomal_mode_btn.TabStop = true;
+            this.Nomal_mode_btn.Text = "單雷射模式";
+            this.Nomal_mode_btn.UseVisualStyleBackColor = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Yellow;
+            this.label22.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label22.Location = new System.Drawing.Point(397, 99);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(135, 19);
+            this.label22.TabIndex = 38;
+            this.label22.Text = "測量模式選項:";
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.button2.Location = new System.Drawing.Point(456, 196);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(106, 53);
+            this.button2.TabIndex = 35;
+            this.button2.Text = "參數存檔";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // ProcessLog_txb
             // 
@@ -184,134 +604,6 @@
             this.label21.Size = new System.Drawing.Size(95, 19);
             this.label21.TabIndex = 36;
             this.label21.Text = "當前狀況:";
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.label17);
-            this.groupBox3.Controls.Add(this.Result_Label);
-            this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.Result);
-            this.groupBox3.Controls.Add(this.BaseLineRMSE_threshold);
-            this.groupBox3.Controls.Add(this.Gamma_Level);
-            this.groupBox3.Controls.Add(this.label19);
-            this.groupBox3.Controls.Add(this.FWHM_RMSE_threshold);
-            this.groupBox3.Controls.Add(this.EXP_Level);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.groupBox3.Location = new System.Drawing.Point(4, 181);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(450, 126);
-            this.groupBox3.TabIndex = 35;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PassNgTest";
-            // 
-            // button2
-            // 
-            this.button2.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button2.Location = new System.Drawing.Point(456, 196);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(106, 53);
-            this.button2.TabIndex = 35;
-            this.button2.Text = "參數存檔";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label17.Location = new System.Drawing.Point(5, 98);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(130, 19);
-            this.label17.TabIndex = 26;
-            this.label17.Text = "BaseRMSE < :";
-            // 
-            // Result_Label
-            // 
-            this.Result_Label.AutoSize = true;
-            this.Result_Label.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Result_Label.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Result_Label.Location = new System.Drawing.Point(85, 36);
-            this.Result_Label.Name = "Result_Label";
-            this.Result_Label.Size = new System.Drawing.Size(37, 19);
-            this.Result_Label.TabIndex = 32;
-            this.Result_Label.Text = "----";
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label20.Location = new System.Drawing.Point(213, 20);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(144, 19);
-            this.label20.TabIndex = 34;
-            this.label20.Text = "Gamma_Level<:";
-            // 
-            // Result
-            // 
-            this.Result.AutoSize = true;
-            this.Result.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Result.Location = new System.Drawing.Point(12, 35);
-            this.Result.Name = "Result";
-            this.Result.Size = new System.Drawing.Size(67, 19);
-            this.Result.TabIndex = 31;
-            this.Result.Text = "Result:";
-            // 
-            // BaseLineRMSE_threshold
-            // 
-            this.BaseLineRMSE_threshold.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.BaseLineRMSE_threshold.Location = new System.Drawing.Point(141, 90);
-            this.BaseLineRMSE_threshold.Name = "BaseLineRMSE_threshold";
-            this.BaseLineRMSE_threshold.Size = new System.Drawing.Size(54, 33);
-            this.BaseLineRMSE_threshold.TabIndex = 25;
-            this.BaseLineRMSE_threshold.Text = "5";
-            // 
-            // Gamma_Level
-            // 
-            this.Gamma_Level.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Gamma_Level.Location = new System.Drawing.Point(373, 15);
-            this.Gamma_Level.Name = "Gamma_Level";
-            this.Gamma_Level.Size = new System.Drawing.Size(73, 33);
-            this.Gamma_Level.TabIndex = 33;
-            this.Gamma_Level.Text = "350";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label19.Location = new System.Drawing.Point(180, 58);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(177, 19);
-            this.label19.TabIndex = 30;
-            this.label19.Text = "Back_Light_Level<:";
-            // 
-            // FWHM_RMSE_threshold
-            // 
-            this.FWHM_RMSE_threshold.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.FWHM_RMSE_threshold.Location = new System.Drawing.Point(373, 89);
-            this.FWHM_RMSE_threshold.Name = "FWHM_RMSE_threshold";
-            this.FWHM_RMSE_threshold.Size = new System.Drawing.Size(73, 33);
-            this.FWHM_RMSE_threshold.TabIndex = 27;
-            this.FWHM_RMSE_threshold.Text = "8";
-            // 
-            // EXP_Level
-            // 
-            this.EXP_Level.Font = new System.Drawing.Font("新細明體", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.EXP_Level.Location = new System.Drawing.Point(373, 53);
-            this.EXP_Level.Name = "EXP_Level";
-            this.EXP_Level.Size = new System.Drawing.Size(73, 33);
-            this.EXP_Level.TabIndex = 29;
-            this.EXP_Level.Text = "4";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label18.Location = new System.Drawing.Point(212, 96);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(149, 19);
-            this.label18.TabIndex = 28;
-            this.label18.Text = "FWHM_RMSE<:";
             // 
             // label13
             // 
@@ -336,9 +628,9 @@
             // 
             this.button1.Enabled = false;
             this.button1.Font = new System.Drawing.Font("新細明體", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.button1.Location = new System.Drawing.Point(220, 311);
+            this.button1.Location = new System.Drawing.Point(220, 322);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(203, 52);
+            this.button1.Size = new System.Drawing.Size(201, 45);
             this.button1.TabIndex = 22;
             this.button1.Text = "Measure";
             this.button1.UseVisualStyleBackColor = true;
@@ -574,9 +866,9 @@
             // btnStart
             // 
             this.btnStart.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.btnStart.Location = new System.Drawing.Point(8, 313);
+            this.btnStart.Location = new System.Drawing.Point(8, 323);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(137, 52);
+            this.btnStart.Size = new System.Drawing.Size(137, 44);
             this.btnStart.TabIndex = 6;
             this.btnStart.Text = "Camera_Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -737,41 +1029,60 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // label22
+            // White_Mode_btn
             // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.Yellow;
-            this.label22.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.label22.Location = new System.Drawing.Point(397, 99);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(135, 19);
-            this.label22.TabIndex = 38;
-            this.label22.Text = "測量模式選項:";
+            this.White_Mode_btn.AutoSize = true;
+            this.White_Mode_btn.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.White_Mode_btn.Location = new System.Drawing.Point(417, 169);
+            this.White_Mode_btn.Name = "White_Mode_btn";
+            this.White_Mode_btn.Size = new System.Drawing.Size(128, 20);
+            this.White_Mode_btn.TabIndex = 42;
+            this.White_Mode_btn.TabStop = true;
+            this.White_Mode_btn.Text = "白光測試模式";
+            this.White_Mode_btn.UseVisualStyleBackColor = true;
             // 
-            // Nomal_mode_btn
+            // hg_scale_passng_CKB
             // 
-            this.Nomal_mode_btn.AutoSize = true;
-            this.Nomal_mode_btn.BackColor = System.Drawing.Color.Transparent;
-            this.Nomal_mode_btn.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.Nomal_mode_btn.Location = new System.Drawing.Point(416, 123);
-            this.Nomal_mode_btn.Name = "Nomal_mode_btn";
-            this.Nomal_mode_btn.Size = new System.Drawing.Size(111, 20);
-            this.Nomal_mode_btn.TabIndex = 39;
-            this.Nomal_mode_btn.TabStop = true;
-            this.Nomal_mode_btn.Text = "單雷射模式";
-            this.Nomal_mode_btn.UseVisualStyleBackColor = false;
+            this.hg_scale_passng_CKB.AutoSize = true;
+            this.hg_scale_passng_CKB.Font = new System.Drawing.Font("標楷體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.hg_scale_passng_CKB.Location = new System.Drawing.Point(191, 5);
+            this.hg_scale_passng_CKB.Name = "hg_scale_passng_CKB";
+            this.hg_scale_passng_CKB.Size = new System.Drawing.Size(145, 19);
+            this.hg_scale_passng_CKB.TabIndex = 197;
+            this.hg_scale_passng_CKB.Text = "汞氬燈比例判定";
+            this.hg_scale_passng_CKB.UseVisualStyleBackColor = true;
             // 
-            // HgAr_Mode_btn
+            // White_scale_passng_CKB
             // 
-            this.HgAr_Mode_btn.AutoSize = true;
-            this.HgAr_Mode_btn.Font = new System.Drawing.Font("新細明體", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
-            this.HgAr_Mode_btn.Location = new System.Drawing.Point(416, 149);
-            this.HgAr_Mode_btn.Name = "HgAr_Mode_btn";
-            this.HgAr_Mode_btn.Size = new System.Drawing.Size(145, 20);
-            this.HgAr_Mode_btn.TabIndex = 40;
-            this.HgAr_Mode_btn.TabStop = true;
-            this.HgAr_Mode_btn.Text = "汞氬燈測試模式";
-            this.HgAr_Mode_btn.UseVisualStyleBackColor = true;
+            this.White_scale_passng_CKB.AutoSize = true;
+            this.White_scale_passng_CKB.Font = new System.Drawing.Font("標楷體", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.White_scale_passng_CKB.Location = new System.Drawing.Point(240, 18);
+            this.White_scale_passng_CKB.Name = "White_scale_passng_CKB";
+            this.White_scale_passng_CKB.Size = new System.Drawing.Size(128, 19);
+            this.White_scale_passng_CKB.TabIndex = 198;
+            this.White_scale_passng_CKB.Text = "白光比例判定";
+            this.White_scale_passng_CKB.UseVisualStyleBackColor = true;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.label23.Location = new System.Drawing.Point(13, 86);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(135, 19);
+            this.label23.TabIndex = 51;
+            this.label23.Text = "比例判定結果:";
+            // 
+            // Scale_Result_Label
+            // 
+            this.Scale_Result_Label.AutoSize = true;
+            this.Scale_Result_Label.Font = new System.Drawing.Font("新細明體", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.Scale_Result_Label.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.Scale_Result_Label.Location = new System.Drawing.Point(154, 86);
+            this.Scale_Result_Label.Name = "Scale_Result_Label";
+            this.Scale_Result_Label.Size = new System.Drawing.Size(37, 19);
+            this.Scale_Result_Label.TabIndex = 52;
+            this.Scale_Result_Label.Text = "----";
             // 
             // Form1
             // 
@@ -789,8 +1100,13 @@
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.PassNgTest.ResumeLayout(false);
+            this.PassNgTest.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -855,21 +1171,47 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label Result_Label;
         private System.Windows.Forms.Label Result;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox EXP_Level;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox FWHM_RMSE_threshold;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox BaseLineRMSE_threshold;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox Gamma_Level;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox ProcessLog_txb;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.RadioButton HgAr_Mode_btn;
         private System.Windows.Forms.RadioButton Nomal_mode_btn;
         private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage PassNgTest;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.TextBox Gamma_Level;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox EXP_Level;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.Label label62;
+        private System.Windows.Forms.Label label64;
+        private System.Windows.Forms.TextBox P3_Scale_txb;
+        private System.Windows.Forms.Label label54;
+        private System.Windows.Forms.Label label56;
+        private System.Windows.Forms.TextBox P2_Scale_txb;
+        private System.Windows.Forms.Label label61;
+        private System.Windows.Forms.Label label60;
+        private System.Windows.Forms.Label label53;
+        private System.Windows.Forms.TextBox P1_Scale_txb;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.TextBox BaseLineRMSE_threshold;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox FWHM_RMSE_threshold;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.Label label_LED_blue;
+        private System.Windows.Forms.Label label_led_yellow;
+        private System.Windows.Forms.TextBox LedYellowFWHM_threshold;
+        private System.Windows.Forms.TextBox LedBlueFWHM_threshold;
+        private System.Windows.Forms.Label label59;
+        private System.Windows.Forms.Label label63;
+        private System.Windows.Forms.Label label58;
+        private System.Windows.Forms.TextBox Blue_Scale_txb;
+        private System.Windows.Forms.RadioButton White_Mode_btn;
+        private System.Windows.Forms.CheckBox hg_scale_passng_CKB;
+        private System.Windows.Forms.CheckBox White_scale_passng_CKB;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label Scale_Result_Label;
     }
 }
 

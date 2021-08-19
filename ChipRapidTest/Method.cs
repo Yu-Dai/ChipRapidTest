@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using MathWorks.MATLAB.NET.Arrays;
 using PolyFit_NPlot;
 using hg_data_Separate;
+using White_Lorentz_and_Gaussian;
 
 namespace ChipRapidTest
 {
@@ -17,7 +18,7 @@ namespace ChipRapidTest
         public static List<double> Hg_Ar_PassNgTest(List<double> HgArIntensity, string SC_ID)
         {
             List<double> Result = new List<double>();
-            Hg_Ar_PassNgTest hg_Ar_PassNgTest = new Hg_Ar_PassNgTest();
+            HgPassNgTest hg_Ar_PassNgTest = new HgPassNgTest();
             MWArray HgArIntensity_M = (MWNumericArray)HgArIntensity.ToArray();
             MWCharArray ID = (MWCharArray)SC_ID;
             MWArray Result_Parameter_M = hg_Ar_PassNgTest.hg_data_Separate(HgArIntensity_M, ID);
@@ -27,6 +28,22 @@ namespace ChipRapidTest
                 Result.Add(Result_Parameter[0, i]);
             }
             hg_Ar_PassNgTest.Dispose();
+            return Result;
+        }
+
+        public static List<double> White_PassNgTest(List<double> WhitetIntensity, string SC_ID)
+        {
+            List<double> Result = new List<double>();
+            WhitePassNgTest Whitet_PassNgTest = new WhitePassNgTest();
+            MWArray Intensity_M = (MWNumericArray)WhitetIntensity.ToArray();
+            MWCharArray ID = (MWCharArray)SC_ID;
+            MWArray Result_Parameter_M = Whitet_PassNgTest.White_Lorentz_and_Gaussian(Intensity_M, ID);
+            double[,] Result_Parameter = (double[,])((MWNumericArray)Result_Parameter_M).ToArray(MWArrayComponent.Real);
+            for (int i = 0; i < Result_Parameter.Length; i++)
+            {
+                Result.Add(Result_Parameter[0, i]);
+            }
+            Whitet_PassNgTest.Dispose();
             return Result;
         }
         public static List<double> get_Original_Intensity(Bitmap input_image)

@@ -26,7 +26,9 @@ namespace ChipRapidTest
         public int EXP_Level_number, Gamma_Level_number;
         public int gamma_number = 100;
         public bool isPass = false, isNg = false , Is_back_number_Max = false;
+        public bool isScalePass = false, isScaleNg = false;
         public List<double> Hg_Ar_PassNg = new List<double>();
+        public List<double> White_PassNg = new List<double>();
         Point ROI_Point;
         delegate void FormUpdata3(List<double> Data);
         #region AutoScaling
@@ -376,12 +378,17 @@ namespace ChipRapidTest
                         iTask = 250;
                         Process_Now = "存AutoScaling後光譜(70%)";
                         break;
-                    case 250://====================================================分歧點: 如果測量維汞氬燈則繼續往下===================================
+                    case 250://====================================================分歧點: 如果測量為汞氬燈或白光則繼續往下===================================
                         this.Invoke(formcontrl3, RealTime_Original_Intensity);
                         if (HgAr_Mode_btn.Checked)
                         {
                             iTask = 300;
                             Process_Now = "計算汞氬燈各項數據(75%)";
+                        }
+                        else if (White_Mode_btn.Checked) 
+                        {
+                            iTask = 300;
+                            Process_Now = "計算白光各項數據(75%)";
                         }
                         else
                         {
@@ -406,28 +413,73 @@ namespace ChipRapidTest
                         Process_Now = "判定結束(90%)";
                         break;
 
-                    case 300://通過與否判定 -----#汞氬燈模式
-                        Hg_Ar_PassNg = Method.Hg_Ar_PassNgTest(RealTime_Original_Intensity, textBox1.Text);
-                        iTask = 350;
-                        Process_Now = "通過與否判定開始(85%)";
+                    case 300://通過與否判定 -----#汞氬燈模式 或 白光模式
+                        if (HgAr_Mode_btn.Checked)
+                        {
+                            Hg_Ar_PassNg = Method.Hg_Ar_PassNgTest(RealTime_Original_Intensity, textBox1.Text);
+                            iTask = 350;
+                            Process_Now = "通過與否判定開始(85%)";
+                        }
+                        else if (White_Mode_btn.Checked) {
+                            White_PassNg = Method.White_PassNgTest(RealTime_Original_Intensity, textBox1.Text);
+                            iTask = 350;
+                            Process_Now = "通過與否判定開始(85%)";
+                        }
+                       
                         break;
                     case 350:
-                        if (Hg_Ar_PassNg[1] < BaseLineRMSE_threshold_number &&
-                        Hg_Ar_PassNg[2] < FWHM_RMSE_threshold_number &&
-                        back_number < EXP_Level_number &&
-                        gamma_number < Gamma_Level_number)
+                        if (HgAr_Mode_btn.Checked)
                         {
-                            isPass = true;
+                            if (Hg_Ar_PassNg[1] < BaseLineRMSE_threshold_number &&
+                            Hg_Ar_PassNg[2] < FWHM_RMSE_threshold_number &&
+                            back_number < EXP_Level_number &&
+                            gamma_number < Gamma_Level_number)
+                            {                           
+                                    isPass = true;                              
+                            }
+                            else
+                            {
+                                isNg = true;
+                            }
+                            if (hg_scale_passng_CKB.Checked)
+                            {
+                                if (Hg_Ar_PassNg[7] > Convert.ToDouble(P1_Scale_txb.Text)
+                                  && Hg_Ar_PassNg[8] > Convert.ToDouble(P2_Scale_txb.Text)
+                                  && Hg_Ar_PassNg[9] > Convert.ToDouble(P3_Scale_txb.Text))
+                                {
+                                    isScalePass = true;
+                                }
+                                else { isScaleNg = true; }
+                            }
+                                                  
                         }
-                        else
+                        else if (White_Mode_btn.Checked)
                         {
-                            isNg = true;
+                            if (White_PassNg[1] < Convert.ToDouble(LedBlueFWHM_threshold.Text) &&
+                            White_PassNg[2] < Convert.ToDouble(LedYellowFWHM_threshold.Text) &&
+                            back_number < EXP_Level_number &&
+                            gamma_number < Gamma_Level_number)
+                            {                             
+                                    isPass = true;                              
+                            }
+                            else
+                            {
+                                isNg = true;
+                            }
+                            if (White_scale_passng_CKB.Checked)
+                            {
+                                if (White_PassNg[3] > Convert.ToDouble(Blue_Scale_txb.Text))
+                                {
+                                    isScalePass = true;
+                                }
+                                else { isScaleNg = true; }
+                            }
                         }
-                        
+
                         Thread.Sleep(1500);
-                                                  //CaptureWindow("Result_AfterLorentz And addBaseLine");//截圖
+                        //CaptureWindow("Result_AfterLorentz And addBaseLine");//截圖
                         iTask = 375;
-                        
+
                         Process_Now = "判定結束(90%)";
                         break;
 
@@ -503,7 +555,15 @@ namespace ChipRapidTest
                 {
                     this.chart_original.Titles[0].Text = File_Name + "  原始雷射光譜" + "\r\n"
                         + "DG,Gamma,BackLight :" + label_DG.Text + "," + label_Gamma.Text + "," + label_Back_Light.Text + "\r\n"
-                        + "BaseLine_RMSE : " + Math.Round(Hg_Ar_PassNg[1], 2).ToString() + "\r\n" + "FWHM_RMSE : " + Math.Round(Hg_Ar_PassNg[2], 2).ToString();
+                        + "BaseLine_RMSE : " + Math.Round(Hg_Ar_PassNg[1], 2).ToString() + "\r\n" + "FWHM_RMSE : " + Math.Round(Hg_Ar_PassNg[2], 2).ToString() + "\r\n" 
+                        + "P1/P3 : " + Math.Round(Hg_Ar_PassNg[7], 2).ToString() + "P2/P3 : " + Math.Round(Hg_Ar_PassNg[8], 2).ToString() + "P4/P3 : " + Math.Round(Hg_Ar_PassNg[9], 2).ToString();
+                }
+                else if (White_Mode_btn.Checked)
+                {
+                    this.chart_original.Titles[0].Text = File_Name + "  原始雷射光譜" + "\r\n"
+                        + "DG,Gamma,BackLight :" + label_DG.Text + "," + label_Gamma.Text + "," + label_Back_Light.Text + "\r\n"
+                        + "BaseLine_RMSE : " + Math.Round(White_PassNg[1], 2).ToString() + "\r\n" + "FWHM_RMSE : " + Math.Round(White_PassNg[2], 2).ToString() + "\r\n"
+                        +"Blue_Scale : " + Math.Round(White_PassNg[3], 2).ToString();
                 }
                 else
                 {
@@ -1080,6 +1140,12 @@ namespace ChipRapidTest
             label4.Text = (ROI_Yx*scaleY).ToString();
             //trackBar1.Value = ROI_Yx* scaleY;
             label15.Text = (ROI_Yx* scaleY).ToString();
+            //=====================比例判定======================
+            if (isScalePass)
+            { Scale_Result_Label.Text = "Pass"; Scale_Result_Label.ForeColor = Color.Green; isScalePass = false; }
+            else if (isScaleNg)
+            { Scale_Result_Label.Text = "NG"; Scale_Result_Label.ForeColor = Color.Red; isScaleNg = false; }
+            //==================================================
             if (isPass)
             { Result_Label.Text = "Pass"; Result_Label.ForeColor = Color.Green; isPass = false; }
             else if (isNg)
@@ -1115,13 +1181,20 @@ namespace ChipRapidTest
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (HgAr_Mode_btn.Checked)
+            string Hg_Scale = "OFF";
+            string White_Scale = "OFF";
+            if (hg_scale_passng_CKB.Checked)
+            { Hg_Scale = "ON"; }
+            if (White_scale_passng_CKB.Checked)
+            { White_Scale = "ON"; }
+            if (HgAr_Mode_btn.Checked)//==========================汞氬燈模式========================
             {
-                if (checkBox_OnlyFirstTimeROI.Checked) 
+                if (checkBox_OnlyFirstTimeROI.Checked)
                 {
                     DialogResult Message_Result =
                         MessageBox.Show("參數設定為" + "\r\n" +
                         "模式 : " + "汞氬燈量測模式" + "\r\n" +
+                        "比例判定 : " + Hg_Scale + "\r\n" +
                         "校正晶片ID : " + textBox1.Text + "\r\n" +
                         "ROI : 除第一次外,不掃描" + "\r\n" +
                         "AutoScaling強度至 :" + AutoScale_txb.Text + "\r\n" +
@@ -1166,6 +1239,100 @@ namespace ChipRapidTest
                     DialogResult Message_Result =
                        MessageBox.Show("參數設定為" + "\r\n" +
                        "模式 : " + "汞氬燈量測模式" + "\r\n" +
+                       "比例判定 : " + Hg_Scale + "\r\n" +
+                       "校正晶片ID : " + textBox1.Text + "\r\n" +
+                       "ROI : 每次測量皆於" + ROI_StartPoint_txb.Text + "開始掃描" + "\r\n" +
+                       "AutoScaling強度至 :" + AutoScale_txb.Text + "\r\n" +
+                       "GammaLevel需 <" + Gamma_Level.Text + "\r\n" +
+                       "Back Light_Level需 <" + EXP_Level.Text + "\r\n" +
+                       "BaseLine_RMSE需 <" + BaseLineRMSE_threshold.Text + "\r\n" +
+                       "FWHM_RMSE需 <" + FWHM_RMSE_threshold.Text + "\r\n" +
+                       "\r\n" +
+                       "\r\n" +
+                       "確認無誤 請按YES開始測量" + "\r\n" +
+                       "按 NO 停止測量"
+
+                       , "確認參數訊息", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (Message_Result.ToString() == "Yes")
+                    {
+                        Result_Label.Text = "----"; Result_Label.ForeColor = Color.Black;
+                        BaseLineRMSE_threshold_number = Convert.ToDouble(BaseLineRMSE_threshold.Text);
+                        FWHM_RMSE_threshold_number = Convert.ToDouble(FWHM_RMSE_threshold.Text);
+                        EXP_Level_number = Convert.ToInt32(EXP_Level.Text);
+                        Gamma_Level_number = Convert.ToInt32(Gamma_Level.Text);
+                        //==================================================================
+                        Nomal_mode_btn.Enabled = false;
+                        HgAr_Mode_btn.Enabled = false;
+                        isMeasureEnd = false;
+                        Is_back_number_Max = false;
+                        File_Name = textBox1.Text;
+                        isBack_NeedCorrection = false;
+                        AutoScaling_process = 20;
+                        if (checkBox_OnlyFirstTimeROI.Checked == false)
+                        {
+                            isGetROI = false;
+                        }
+                        back_number = 0;
+                        gamma_number = 100;
+                        Index_of_Max = 0;
+                        iTask = 1;
+                        Directory.CreateDirectory(@"量測結果\" + File_Name + @"\");
+                    }
+                }
+            }
+            else if (White_Mode_btn.Checked)//===============================白光模式========================================
+            {
+                if (checkBox_OnlyFirstTimeROI.Checked)
+                {
+                    DialogResult Message_Result =
+                        MessageBox.Show("參數設定為" + "\r\n" +
+                        "模式 : " + "白光量測模式" + "\r\n" +
+                        "比例判定 : " + White_Scale + "\r\n" +
+                        "校正晶片ID : " + textBox1.Text + "\r\n" +
+                        "ROI : 除第一次外,不掃描" + "\r\n" +
+                        "AutoScaling強度至 :" + AutoScale_txb.Text + "\r\n" +
+                        "GammaLevel需 <" + Gamma_Level.Text + "\r\n" +
+                        "Back Light_Level需 <" + EXP_Level.Text + "\r\n" +
+                        "BaseLine_RMSE需 <" + BaseLineRMSE_threshold.Text + "\r\n" +
+                        "FWHM_RMSE需 <" + FWHM_RMSE_threshold.Text + "\r\n" +
+                        "\r\n" +
+                        "\r\n" +
+                        "確認無誤 請按YES開始測量" + "\r\n" +
+                        "按 NO 停止測量"
+
+                        , "確認參數訊息", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                    if (Message_Result.ToString() == "Yes")
+                    {
+                        Result_Label.Text = "----"; Result_Label.ForeColor = Color.Black;
+                        BaseLineRMSE_threshold_number = Convert.ToDouble(BaseLineRMSE_threshold.Text);
+                        FWHM_RMSE_threshold_number = Convert.ToDouble(FWHM_RMSE_threshold.Text);
+                        EXP_Level_number = Convert.ToInt32(EXP_Level.Text);
+                        Gamma_Level_number = Convert.ToInt32(Gamma_Level.Text);
+                        //==================================================================
+                        Nomal_mode_btn.Enabled = false;
+                        HgAr_Mode_btn.Enabled = false;
+                        isMeasureEnd = false;
+                        Is_back_number_Max = false;
+                        File_Name = textBox1.Text;
+                        isBack_NeedCorrection = false;
+                        AutoScaling_process = 20;
+                        if (checkBox_OnlyFirstTimeROI.Checked == false)
+                        {
+                            isGetROI = false;
+                        }
+                        back_number = 0;
+                        gamma_number = 100;
+                        Index_of_Max = 0;
+                        iTask = 1;
+                        Directory.CreateDirectory(@"量測結果\" + File_Name + @"\");
+                    }
+                }
+                else
+                {
+                    DialogResult Message_Result =
+                       MessageBox.Show("參數設定為" + "\r\n" +
+                       "模式 : " + "白光量測模式" + "\r\n" +
+                       "比例判定 : " + White_Scale + "\r\n" +
                        "校正晶片ID : " + textBox1.Text + "\r\n" +
                        "ROI : 每次測量皆於" + ROI_StartPoint_txb.Text + "開始掃描" + "\r\n" +
                        "AutoScaling強度至 :" + AutoScale_txb.Text + "\r\n" +
@@ -1321,6 +1488,12 @@ namespace ChipRapidTest
                 parameter.Add("T");
             }
             else { parameter.Add("F"); }
+            parameter.Add(P1_Scale_txb.Text);
+            parameter.Add(P2_Scale_txb.Text);
+            parameter.Add(P3_Scale_txb.Text);
+            parameter.Add(LedBlueFWHM_threshold.Text);
+            parameter.Add(LedYellowFWHM_threshold.Text);
+            parameter.Add(Blue_Scale_txb.Text);
             File.WriteAllLines("parameter.txt", parameter);
             MessageBox.Show("參數更改成功\r\n下次開始程式時自動載入");
         }
@@ -1364,7 +1537,12 @@ namespace ChipRapidTest
             {
                 HgAr_Mode_btn.Checked = false;
             }
-
+            P1_Scale_txb.Text = parameter_load[9];
+            P2_Scale_txb.Text = parameter_load[10];
+            P3_Scale_txb.Text = parameter_load[11];
+            LedBlueFWHM_threshold.Text = parameter_load[12];
+            LedYellowFWHM_threshold.Text = parameter_load[13];
+            Blue_Scale_txb.Text = parameter_load[14];           
             //=======================================================
             DrawCanvas.Parent = CCDImage;
             ROIImage.Parent = panel1;
