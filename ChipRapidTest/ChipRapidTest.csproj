@@ -55,7 +55,8 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="hg_data_Separate">
+    <Reference Include="hg_data_Separate, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\MATLAB_M檔\Algorithm_by_matlab\hg_data_Separate\for_redistribution_files_only\hg_data_Separate.dll</HintPath>
     </Reference>
     <Reference Include="MWArray, Version=2.18.0.0, Culture=neutral, PublicKeyToken=e1d84a0da19db86f, processorArchitecture=MSIL">

@@ -556,7 +556,7 @@ namespace ChipRapidTest
                     this.chart_original.Titles[0].Text = File_Name + "  原始雷射光譜" + "\r\n"
                         + "DG,Gamma,BackLight :" + label_DG.Text + "," + label_Gamma.Text + "," + label_Back_Light.Text + "\r\n"
                         + "BaseLine_RMSE : " + Math.Round(Hg_Ar_PassNg[1], 2).ToString() + "\r\n" + "FWHM_RMSE : " + Math.Round(Hg_Ar_PassNg[2], 2).ToString() + "\r\n" 
-                        + "P1/P3 : " + Math.Round(Hg_Ar_PassNg[7], 2).ToString() + "P2/P3 : " + Math.Round(Hg_Ar_PassNg[8], 2).ToString() + "P4/P3 : " + Math.Round(Hg_Ar_PassNg[9], 2).ToString();
+                        + "P1/P3: " + Math.Round(Hg_Ar_PassNg[7], 2).ToString() +"   "+ "P2/P3: " + Math.Round(Hg_Ar_PassNg[8], 2).ToString() + "   " + "P4/P3: " + Math.Round(Hg_Ar_PassNg[9], 2).ToString();
                 }
                 else if (White_Mode_btn.Checked)
                 {
@@ -1156,6 +1156,7 @@ namespace ChipRapidTest
             {
                 Nomal_mode_btn.Enabled = true;
                 HgAr_Mode_btn.Enabled = true;
+                White_Mode_btn.Enabled = true;
             }
 
             //========================更新進度textbox==================================
@@ -1222,6 +1223,8 @@ namespace ChipRapidTest
                         Is_back_number_Max = false;
                         File_Name = textBox1.Text;
                         isBack_NeedCorrection = false;
+                        Scale_Result_Label.Text = "----"; Scale_Result_Label.ForeColor = Color.Black;
+                        White_Mode_btn.Enabled = false;
                         AutoScaling_process = 20;
                         if (checkBox_OnlyFirstTimeROI.Checked == false)
                         {
@@ -1267,6 +1270,8 @@ namespace ChipRapidTest
                         Is_back_number_Max = false;
                         File_Name = textBox1.Text;
                         isBack_NeedCorrection = false;
+                        Scale_Result_Label.Text = "----"; Scale_Result_Label.ForeColor = Color.Black;
+                        White_Mode_btn.Enabled = false;
                         AutoScaling_process = 20;
                         if (checkBox_OnlyFirstTimeROI.Checked == false)
                         {
@@ -1315,6 +1320,8 @@ namespace ChipRapidTest
                         Is_back_number_Max = false;
                         File_Name = textBox1.Text;
                         isBack_NeedCorrection = false;
+                        Scale_Result_Label.Text = "----"; Scale_Result_Label.ForeColor = Color.Black;
+                        White_Mode_btn.Enabled = false;
                         AutoScaling_process = 20;
                         if (checkBox_OnlyFirstTimeROI.Checked == false)
                         {
@@ -1360,6 +1367,8 @@ namespace ChipRapidTest
                         Is_back_number_Max = false;
                         File_Name = textBox1.Text;
                         isBack_NeedCorrection = false;
+                        Scale_Result_Label.Text = "----"; Scale_Result_Label.ForeColor = Color.Black;
+                        White_Mode_btn.Enabled = false;
                         AutoScaling_process = 20;
                         if (checkBox_OnlyFirstTimeROI.Checked == false)
                         {
@@ -1405,6 +1414,8 @@ namespace ChipRapidTest
                         Is_back_number_Max = false;
                         File_Name = textBox1.Text;
                         isBack_NeedCorrection = false;
+                        Scale_Result_Label.Text = "----"; Scale_Result_Label.ForeColor = Color.Black;
+                        White_Mode_btn.Enabled = false;
                         AutoScaling_process = 20;
                         if (checkBox_OnlyFirstTimeROI.Checked == false)
                         {
@@ -1449,6 +1460,8 @@ namespace ChipRapidTest
                         Is_back_number_Max = false;
                         File_Name = textBox1.Text;
                         isBack_NeedCorrection = false;
+                        Scale_Result_Label.Text = "----"; Scale_Result_Label.ForeColor = Color.Black;
+                        White_Mode_btn.Enabled = false;
                         AutoScaling_process = 20;
                         if (checkBox_OnlyFirstTimeROI.Checked == false)
                         {
